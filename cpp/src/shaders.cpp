@@ -36,7 +36,7 @@ shaderClass::shaderClass(const char* vertexShaderPath, const char* fragmentShade
 
     // init vertex shader ----------------------
     unsigned int vertexShader;
-    glCreateShader(GL_VERTEX_SHADER);
+    vertexShader =  glCreateShader(GL_VERTEX_SHADER);
     glShaderSource(vertexShader, 1, &vertexSourceCode, NULL);
     glCompileShader(vertexShader);
 
@@ -49,7 +49,7 @@ shaderClass::shaderClass(const char* vertexShaderPath, const char* fragmentShade
 
     // init fragment shader --------------------
     unsigned int fragmentShader;
-    glCreateShader(GL_FRAGMENT_SHADER);
+    fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
     glShaderSource(fragmentShader, 1, &fragmentSourceCode, NULL);
     glCompileShader(fragmentShader);
 

@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+
+#define _USE_MATH_DEFINES
 #include <cmath>
 
 #include <glad.h>
@@ -30,8 +32,11 @@ std::vector<float> initVertices(const int& segments, const float& radius) {
         float angle = 2.0f * M_PI * i / segments;
         float x = radius * cos(angle);
         float y = radius * sin(angle);
+        vertices.push_back(x);
+        vertices.push_back(y);
+        vertices.push_back(0.0f);
     }
-    
+    return vertices;
 }
 
 void program() {
@@ -48,8 +53,8 @@ void program() {
     // ---------------------------------
 
     // vertices data -------------------
-    float vertices[] = {};
-    unsigned int indices[] = {};
+    std::vector<float> vertices = initVertices(100, 0.5);
+    // unsigned int indices[] = {};
     // ---------------------------------
 
     // vertices ------------------------
@@ -64,10 +69,13 @@ void program() {
     glBindVertexArray(VAO);
 
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    // glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), vertices.data(), GL_STATIC_DRAW);
+    // glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
     // ---------------------------------
 
     // shaders init --------------------
@@ -79,6 +87,10 @@ void program() {
         glClear(GL_COLOR_BUFFER_BIT);
 
         shader.use();
+
+        glBindVertexArray(VAO);
+        glDrawArrays(GL_TRIANGLE_FAN, 0, vertices.size() / 3);
+        glBindVertexArray(0);
 
         glfwSwapBuffers(window);
         glfwPollEvents();
