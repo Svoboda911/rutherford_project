@@ -1,9 +1,6 @@
-
-
 #include "shaders.h"
 
 // definition for shader class
-
 shaderClass::shaderClass(const char* vertexShaderPath, const char* fragmentShaderPath) {
     std::ifstream vertexShaderFile;
     std::ifstream fragmentShaderFile;
@@ -74,6 +71,7 @@ shaderClass::shaderClass(const char* vertexShaderPath, const char* fragmentShade
         glGetProgramInfoLog(ID_program, 512, NULL, infoLog);
         std::cout << infoLog << std::endl;
     }
+    // -----------------------------------------
 
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
