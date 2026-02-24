@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/FleurDeLys/Public/rutherford_project/cpp/includes/glfw/include -I/home/FleurDeLys/Public/rutherford_project/cpp/includes/glad -I/home/FleurDeLys/Public/rutherford_project/cpp/includes/glm
+CXX_INCLUDES = -I/home/FleurDeLys/Public/rutherford_project/cpp/headers -I/home/FleurDeLys/Public/rutherford_project/cpp/includes/glfw/include -I/home/FleurDeLys/Public/rutherford_project/cpp/includes/glad -I/home/FleurDeLys/Public/rutherford_project/cpp/includes/glm
 
 CXX_FLAGS = 
 
