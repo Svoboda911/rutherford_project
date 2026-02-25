@@ -41,17 +41,21 @@ std::vector<float> initVertices(const int& segments, const float& radius) {
     return vertices;
 }
 
+void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
+    glViewport(0, 0, width, height);
+}
+
 void program() {
     // glfw init -----------------------
     if(!glfwInit()) return;
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    GLFWwindow* window = glfwCreateWindow(512, 512, "project", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(940, 940, "project", NULL, NULL);
     if(!window) {glfwTerminate(); return;}; 
     glfwMakeContextCurrent(window);
     if(!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) return; 
-    glViewport(0, 0, 512, 512);
+    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
     // ---------------------------------
 
     // vertices data -------------------
@@ -87,27 +91,63 @@ void program() {
     shaderClass shader("../shaders/vertex.glsl", "../shaders/fragment.glsl");
 
     // glm -----------------------------
-    unsigned int programLoc = glGetUniformLocation(shader.ID_program, "model");
-    glm::mat4 model = glm::mat4(1.0f);
-    model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
-    model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+    unsigned int programLocModel = glGetUniformLocation(shader.ID_program, "model");
+    unsigned int programLocColor = glGetUniformLocation(shader.ID_program, "color");
+    glm::mat4 kernel = glm::mat4(1.0f);
+    kernel = glm::translate(kernel, glm::vec3(0.0f, 0.0f, 0.0f));
+    kernel = glm::scale(kernel, glm::vec3(0.2f, 0.2f, 0.2f));
 
-    glm::mat4 model2 = glm::mat4(1.0f);
-    model2 = glm::translate(model2, glm::vec3(-0.5f, 0.0f, 0.0f));
+    glm::vec3 kernelPos = glm::vec3(0.0f, 0.0f, 0.0f);
+    glm::vec3 alphaPos = glm::vec3(-0.5f, 0.0f, 0.0f);
+    glm::vec3 alphaVelocity = glm::vec3(0.3f, 0.0f, 0.0f);
+
+    glm::mat4 alpha= glm::mat4(1.0f);
+    alpha = glm::scale(alpha, glm::vec3(0.05f));
+
+    float lastTime = glfwGetTime();
+    float k = 1.0f; 
+    float q1 = 2.0f;
+    float q2 = 79.0f;
     // ---------------------------------
 
     // program loop --------------------
     while(!glfwWindowShouldClose(window)) {
-        glClearColor(0.1f, 0.1f, 0.1f, 0.1f);
+        glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
         shader.use();
-
-        glUniformMatrix4fv(programLoc, 1, GL_FALSE, glm::value_ptr(model2));
-        glUniformMatrix4fv(programLoc, 1, GL_FALSE, glm::value_ptr(model));
-
         glBindVertexArray(VAO);
+
+        // physics and moves -----------------------------
+        float currentTime = glfwGetTime();
+        float deltaTime = currentTime - lastTime; 
+        lastTime = currentTime;
+
+        glm::vec3 direction = kernelPos - alphaPos;
+        float r = glm::length(direction);
+        r = std::max(r, 0.01f);
+
+        glm::vec3 forceDir = glm::normalize(direction);
+        float forceMagnitude = k * q1 * q2 / (r*r);
+        glm::vec3 force = forceDir * forceMagnitude; // a = F/m | v += a * dt | pos += v * dt
+
+        glm::vec3 a = force / 1.0f;
+        alphaVelocity = alphaVelocity + (a * deltaTime);
+
+        alphaPos = alphaPos + (alphaVelocity * deltaTime);
+        // -----------------------------------------------
+
+        // send uniform models ---------------------------
+        alpha = glm::translate(alpha, alphaPos);
+        glUniformMatrix4fv(programLocModel, 1, GL_FALSE, glm::value_ptr(kernel));
+        glUniform3f(programLocColor, 0.5f, 0.0f, 0.0f);
         glDrawArrays(GL_TRIANGLE_FAN, 0, vertices.size() / 3);
+
+        glUniformMatrix4fv(programLocModel, 1, GL_FALSE, glm::value_ptr(alpha));
+        glUniform3f(programLocColor, 0.9f, 0.5f, 0.0f);
+        glDrawArrays(GL_TRIANGLE_FAN, 0, vertices.size() / 3);
+        // -----------------------------------------------
+
         glBindVertexArray(0);
 
         glfwSwapBuffers(window);
