@@ -101,11 +101,8 @@ void program() {
     glm::vec3 alphaPos = glm::vec3(-0.5f, 0.0f, 0.0f);
     glm::vec3 alphaVelocity = glm::vec3(0.3f, 0.0f, 0.0f);
 
-    glm::mat4 alpha= glm::mat4(1.0f);
-    alpha = glm::scale(alpha, glm::vec3(0.05f));
-
     float lastTime = glfwGetTime();
-    float k = 1.0f; 
+    float k = 0.01f; 
     float q1 = 2.0f;
     float q2 = 79.0f;
     // ---------------------------------
@@ -131,14 +128,17 @@ void program() {
         float forceMagnitude = k * q1 * q2 / (r*r);
         glm::vec3 force = forceDir * forceMagnitude; // a = F/m | v += a * dt | pos += v * dt
 
-        glm::vec3 a = force / 1.0f;
+        glm::vec3 a = force / 15.0f; 
+        std::cout << a.x << a.y << a.z << std::endl;
         alphaVelocity = alphaVelocity + (a * deltaTime);
 
         alphaPos = alphaPos + (alphaVelocity * deltaTime);
         // -----------------------------------------------
 
         // send uniform models ---------------------------
+        glm::mat4 alpha= glm::mat4(1.0f);
         alpha = glm::translate(alpha, alphaPos);
+        alpha = glm::scale(alpha, glm::vec3(0.05f));
         glUniformMatrix4fv(programLocModel, 1, GL_FALSE, glm::value_ptr(kernel));
         glUniform3f(programLocColor, 0.5f, 0.0f, 0.0f);
         glDrawArrays(GL_TRIANGLE_FAN, 0, vertices.size() / 3);
