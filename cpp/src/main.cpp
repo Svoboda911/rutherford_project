@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+#include <cstdlib>
+#include <ctime>
 
 #define _USE_MATH_DEFINES
 #include <cmath>
@@ -13,19 +15,9 @@
 
 #include "shaders.h"
 
-/* 
-Нарисовать просто круг (ядро)
-
-Нарисовать движущуюся точку
-
-Заставить точку менять направление
-
-Потом добавить формулу силы
-*/
-
-struct particle {
-    glm::vec4 position;
-    glm::vec2 velocity;
+struct particles {
+    glm::vec3 startPos;
+    glm::vec3 startVelocity;
 };
 
 std::vector<float> initVertices(const int& segments, const float& radius) {
@@ -41,8 +33,39 @@ std::vector<float> initVertices(const int& segments, const float& radius) {
     return vertices;
 }
 
+void updateParticle(glm::vec3& alphaPos, glm::vec3& alphaVelocity, glm::vec3& kernelPos, float deltaTime, std::vector<float>& vertices, unsigned int& programLocModel, unsigned int& programLocColor) {
+    float k = 0.00015f; 
+    float q1 = 2.0f;
+    float q2 = 79.0f;
+
+    glm::vec3 direction = alphaPos - kernelPos;
+    float r = glm::length(direction);
+    r = std::max(r, 0.01f);
+        
+    glm::vec3 forceDir = glm::normalize(direction);
+    float forceMagnitude = k * q1 * q2 / (r*r);
+    glm::vec3 force = forceDir * forceMagnitude; // a = F/m | v += a * dt | pos += v * dt
+
+    glm::vec3 a = force / 10.0f; 
+
+    alphaVelocity = alphaVelocity + (a * deltaTime);
+    alphaPos = alphaPos + (alphaVelocity * deltaTime);
+
+    glm::mat4 alpha= glm::mat4(1.0f);
+    alpha = glm::translate(alpha, alphaPos);
+    alpha = glm::scale(alpha, glm::vec3(0.02f));
+
+    glUniformMatrix4fv(programLocModel, 1, GL_FALSE, glm::value_ptr(alpha));
+    glUniform3f(programLocColor, 0.9f, 0.5f, 0.0f);
+    glDrawArrays(GL_TRIANGLE_FAN, 0, vertices.size() / 3);
+}
+
 void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
     glViewport(0, 0, width, height);
+}
+
+float randomFloat(float min, float max) {
+    return min + static_cast<float>(rand()) / static_cast<float>(RAND_MAX) * (max - min);
 }
 
 void program() {
@@ -94,17 +117,24 @@ void program() {
     unsigned int programLocModel = glGetUniformLocation(shader.ID_program, "model");
     unsigned int programLocColor = glGetUniformLocation(shader.ID_program, "color");
     glm::mat4 kernel = glm::mat4(1.0f);
-    kernel = glm::translate(kernel, glm::vec3(0.0f, 0.0f, 0.0f));
-    kernel = glm::scale(kernel, glm::vec3(0.2f, 0.2f, 0.2f));
+    kernel = glm::translate(kernel, glm::vec3(0.45f, 0.0f, 0.0f));
+    kernel = glm::scale(kernel, glm::vec3(0.08f));
 
-    glm::vec3 kernelPos = glm::vec3(0.0f, 0.0f, 0.0f);
-    glm::vec3 alphaPos = glm::vec3(-0.5f, 0.0f, 0.0f);
-    glm::vec3 alphaVelocity = glm::vec3(0.3f, 0.0f, 0.0f);
+    glm::vec3 kernelPos = glm::vec3(0.45f, 0.0f, 0.0f);
 
     float lastTime = glfwGetTime();
-    float k = 0.01f; 
-    float q1 = 2.0f;
-    float q2 = 79.0f;
+
+    int numAlphaParticles = 20;
+    // ---------------------------------
+
+    // generate alphas paritcles -------
+    std::vector<particles> alphas;
+    for (int i = 0; i < numAlphaParticles; i++) {
+        particles alpha;
+        alpha.startPos = glm::vec3(randomFloat(-0.9f, -0.8f), randomFloat(-0.9f, 0.9f), 0.0f);
+        alpha.startVelocity = glm::vec3(randomFloat(0.2f, 0.25f), 0.0f, 0.0f);
+        alphas.push_back(alpha);
+    }
     // ---------------------------------
 
     // program loop --------------------
@@ -119,33 +149,16 @@ void program() {
         float currentTime = glfwGetTime();
         float deltaTime = currentTime - lastTime; 
         lastTime = currentTime;
-
-        glm::vec3 direction = kernelPos - alphaPos;
-        float r = glm::length(direction);
-        r = std::max(r, 0.01f);
-
-        glm::vec3 forceDir = glm::normalize(direction);
-        float forceMagnitude = k * q1 * q2 / (r*r);
-        glm::vec3 force = forceDir * forceMagnitude; // a = F/m | v += a * dt | pos += v * dt
-
-        glm::vec3 a = force / 15.0f; 
-        std::cout << a.x << a.y << a.z << std::endl;
-        alphaVelocity = alphaVelocity + (a * deltaTime);
-
-        alphaPos = alphaPos + (alphaVelocity * deltaTime);
         // -----------------------------------------------
 
         // send uniform models ---------------------------
-        glm::mat4 alpha= glm::mat4(1.0f);
-        alpha = glm::translate(alpha, alphaPos);
-        alpha = glm::scale(alpha, glm::vec3(0.05f));
         glUniformMatrix4fv(programLocModel, 1, GL_FALSE, glm::value_ptr(kernel));
         glUniform3f(programLocColor, 0.5f, 0.0f, 0.0f);
         glDrawArrays(GL_TRIANGLE_FAN, 0, vertices.size() / 3);
 
-        glUniformMatrix4fv(programLocModel, 1, GL_FALSE, glm::value_ptr(alpha));
-        glUniform3f(programLocColor, 0.9f, 0.5f, 0.0f);
-        glDrawArrays(GL_TRIANGLE_FAN, 0, vertices.size() / 3);
+        for(auto& alpha : alphas) {
+            updateParticle(alpha.startPos, alpha.startVelocity, kernelPos, deltaTime, vertices, programLocModel, programLocColor);
+        }
         // -----------------------------------------------
 
         glBindVertexArray(0);

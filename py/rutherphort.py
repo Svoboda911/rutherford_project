@@ -6,6 +6,7 @@ from collections import deque
 from OpenGL.GL import *
 from OpenGL.GLUT import *
 from OpenGL.GLU import *
+from OpenGL.GLUT import GLUT_BITMAP_9_BY_15, GLUT_BITMAP_HELVETICA_12
 
 # =========================================================
 # Window
