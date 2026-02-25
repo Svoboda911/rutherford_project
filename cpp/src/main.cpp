@@ -8,6 +8,8 @@
 #include <GLFW/glfw3.h>
 
 #include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 #include "shaders.h"
 
@@ -22,7 +24,7 @@
 */
 
 struct particle {
-    glm::vec2 position;
+    glm::vec4 position;
     glm::vec2 velocity;
 };
 
@@ -54,6 +56,9 @@ void program() {
 
     // vertices data -------------------
     std::vector<float> vertices = initVertices(100, 0.5);
+    for (float& i : vertices) {
+        std::cout << i << " " << std::endl;
+    }
     // unsigned int indices[] = {};
     // ---------------------------------
 
@@ -81,12 +86,25 @@ void program() {
     // shaders init --------------------
     shaderClass shader("../shaders/vertex.glsl", "../shaders/fragment.glsl");
 
+    // glm -----------------------------
+    unsigned int programLoc = glGetUniformLocation(shader.ID_program, "model");
+    glm::mat4 model = glm::mat4(1.0f);
+    model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
+    model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+
+    glm::mat4 model2 = glm::mat4(1.0f);
+    model2 = glm::translate(model2, glm::vec3(-0.5f, 0.0f, 0.0f));
+    // ---------------------------------
+
     // program loop --------------------
     while(!glfwWindowShouldClose(window)) {
         glClearColor(0.1f, 0.1f, 0.1f, 0.1f);
         glClear(GL_COLOR_BUFFER_BIT);
 
         shader.use();
+
+        glUniformMatrix4fv(programLoc, 1, GL_FALSE, glm::value_ptr(model2));
+        glUniformMatrix4fv(programLoc, 1, GL_FALSE, glm::value_ptr(model));
 
         glBindVertexArray(VAO);
         glDrawArrays(GL_TRIANGLE_FAN, 0, vertices.size() / 3);

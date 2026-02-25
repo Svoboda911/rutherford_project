@@ -36,7 +36,7 @@ shaderClass::shaderClass(const char* vertexShaderPath, const char* fragmentShade
 
     // init vertex shader ----------------------
     unsigned int vertexShader;
-    vertexShader =  glCreateShader(GL_VERTEX_SHADER);
+    vertexShader = glCreateShader(GL_VERTEX_SHADER);
     glShaderSource(vertexShader, 1, &vertexSourceCode, NULL);
     glCompileShader(vertexShader);
 

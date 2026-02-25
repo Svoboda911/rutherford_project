@@ -10,8 +10,7 @@
 
 class shaderClass {
 public:
+    unsigned int ID_program;
     shaderClass(const char* vertexShaderPath, const char* fragmentShaderPath);
     void use();
-private:
-    unsigned int ID_program;
 };
