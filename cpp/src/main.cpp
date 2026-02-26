@@ -117,21 +117,21 @@ void program() {
     unsigned int programLocModel = glGetUniformLocation(shader.ID_program, "model");
     unsigned int programLocColor = glGetUniformLocation(shader.ID_program, "color");
     glm::mat4 kernel = glm::mat4(1.0f);
-    kernel = glm::translate(kernel, glm::vec3(0.45f, 0.0f, 0.0f));
+    kernel = glm::translate(kernel, glm::vec3(0.55f, 0.0f, 0.0f));
     kernel = glm::scale(kernel, glm::vec3(0.08f));
 
-    glm::vec3 kernelPos = glm::vec3(0.45f, 0.0f, 0.0f);
+    glm::vec3 kernelPos = glm::vec3(0.55f, 0.0f, 0.0f);
 
     float lastTime = glfwGetTime();
 
-    int numAlphaParticles = 20;
+    int numAlphaParticles = 450;
     // ---------------------------------
 
     // generate alphas paritcles -------
     std::vector<particles> alphas;
     for (int i = 0; i < numAlphaParticles; i++) {
         particles alpha;
-        alpha.startPos = glm::vec3(randomFloat(-0.9f, -0.8f), randomFloat(-0.9f, 0.9f), 0.0f);
+        alpha.startPos = glm::vec3(randomFloat(-0.99f, -0.41f), randomFloat(-0.9f, 0.9f), 0.0f);
         alpha.startVelocity = glm::vec3(randomFloat(0.2f, 0.25f), 0.0f, 0.0f);
         alphas.push_back(alpha);
     }
