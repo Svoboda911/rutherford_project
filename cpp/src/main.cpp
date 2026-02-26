@@ -60,8 +60,10 @@ void updateParticle(glm::vec3& alphaPos, glm::vec3& alphaVelocity, glm::vec3& ke
     glDrawArrays(GL_TRIANGLE_FAN, 0, vertices.size() / 3);
 }
 
-void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
+void framebuffer_size_callback(GLFWwindow* window, int& width, int& height, glm::mat4& projection) {
     glViewport(0, 0, width, height);
+    float aspect = (float)width / (float)height;
+    projection = glm::ortho(-aspect, aspect, -1.0f, 1.0f);
 }
 
 float randomFloat(float min, float max) {
@@ -74,11 +76,15 @@ void program() {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    GLFWwindow* window = glfwCreateWindow(940, 940, "project", NULL, NULL);
+    int width = 840;
+    int height = 840;
+    glm::mat4 projection;
+    GLFWwindow* window = glfwCreateWindow(width, height, "project", NULL, NULL);
     if(!window) {glfwTerminate(); return;}; 
     glfwMakeContextCurrent(window);
     if(!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) return; 
-    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+    glfwGetFramebufferSize(window, &width, &height);
+    framebuffer_size_callback(window, width, height, projection);
     // ---------------------------------
 
     // vertices data -------------------
@@ -155,6 +161,8 @@ void program() {
         glUniformMatrix4fv(programLocModel, 1, GL_FALSE, glm::value_ptr(kernel));
         glUniform3f(programLocColor, 0.5f, 0.0f, 0.0f);
         glDrawArrays(GL_TRIANGLE_FAN, 0, vertices.size() / 3);
+
+        glUniformMatrix4fv(glGetUniformLocation(shader.ID_program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
 
         for(auto& alpha : alphas) {
             updateParticle(alpha.startPos, alpha.startVelocity, kernelPos, deltaTime, vertices, programLocModel, programLocColor);
