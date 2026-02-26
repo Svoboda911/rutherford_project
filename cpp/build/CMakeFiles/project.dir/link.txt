@@ -1,1 +1,1 @@
-/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/project.dir/link.d CMakeFiles/project.dir/src/main.cpp.o CMakeFiles/project.dir/src/shaders.cpp.o -o project  includes/glfw/src/libglfw3.a libglad.a includes/glm/glm/libglm.a /usr/lib/librt.a -lm -ldl
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/project.dir/link.d CMakeFiles/project.dir/src/main.cpp.o CMakeFiles/project.dir/src/shaders.cpp.o CMakeFiles/project.dir/src/physics.cpp.o -o project  includes/glfw/src/libglfw3.a libglad.a includes/glm/glm/libglm.a /usr/lib/librt.a -lm -ldl

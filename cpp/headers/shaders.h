@@ -8,9 +8,9 @@
 #include <glad.h>
 #include <GLFW/glfw3.h>
 
-class shaderClass {
+class shader {
 public:
-    unsigned int ID_program;
-    shaderClass(const char* vertexShaderPath, const char* fragmentShaderPath);
+    unsigned int program;
+    shader(const char* vertexShaderPath, const char* fragmentShaderPath);
     void use();
 };

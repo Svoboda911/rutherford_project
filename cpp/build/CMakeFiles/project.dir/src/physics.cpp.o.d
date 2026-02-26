@@ -1,6 +1,8 @@
-CMakeFiles/project.dir/src/main.cpp.o: \
- /home/FleurDeLys/Public/rutherford_project/cpp/src/main.cpp \
- /usr/include/stdc-predef.h /usr/include/c++/14.2.1/iostream \
+CMakeFiles/project.dir/src/physics.cpp.o: \
+ /home/FleurDeLys/Public/rutherford_project/cpp/src/physics.cpp \
+ /usr/include/stdc-predef.h \
+ /home/FleurDeLys/Public/rutherford_project/cpp/headers/physics.h \
+ /usr/include/c++/14.2.1/iostream \
  /usr/include/c++/14.2.1/bits/requires_hosted.h \
  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/os_defines.h \
@@ -141,7 +143,15 @@ CMakeFiles/project.dir/src/main.cpp.o: \
  /usr/include/c++/14.2.1/bits/stl_uninitialized.h \
  /usr/include/c++/14.2.1/bits/stl_vector.h \
  /usr/include/c++/14.2.1/bits/stl_bvector.h \
- /usr/include/c++/14.2.1/bits/vector.tcc /usr/include/c++/14.2.1/ctime \
+ /usr/include/c++/14.2.1/bits/vector.tcc \
+ /home/FleurDeLys/Public/rutherford_project/cpp/includes/glad/glad.h \
+ /usr/include/KHR/khrplatform.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdint.h \
+ /usr/include/stdint.h /usr/include/bits/stdint-uintn.h \
+ /usr/include/bits/stdint-least.h \
+ /home/FleurDeLys/Public/rutherford_project/cpp/includes/glfw/include/GLFW/glfw3.h \
+ /home/FleurDeLys/Public/rutherford_project/cpp/includes/glm/glm/glm.hpp \
+ /home/FleurDeLys/Public/rutherford_project/cpp/includes/glm/glm/detail/_fixes.hpp \
  /usr/include/c++/14.2.1/cmath /usr/include/math.h \
  /usr/include/bits/math-vector.h /usr/include/bits/libm-simd-decl-stubs.h \
  /usr/include/bits/flt-eval-method.h /usr/include/bits/fp-logb.h \
@@ -161,14 +171,6 @@ CMakeFiles/project.dir/src/main.cpp.o: \
  /usr/include/c++/14.2.1/tr1/poly_hermite.tcc \
  /usr/include/c++/14.2.1/tr1/poly_laguerre.tcc \
  /usr/include/c++/14.2.1/tr1/riemann_zeta.tcc \
- /home/FleurDeLys/Public/rutherford_project/cpp/includes/glad/glad.h \
- /usr/include/KHR/khrplatform.h \
- /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdint.h \
- /usr/include/stdint.h /usr/include/bits/stdint-uintn.h \
- /usr/include/bits/stdint-least.h \
- /home/FleurDeLys/Public/rutherford_project/cpp/includes/glfw/include/GLFW/glfw3.h \
- /home/FleurDeLys/Public/rutherford_project/cpp/includes/glm/glm/glm.hpp \
- /home/FleurDeLys/Public/rutherford_project/cpp/includes/glm/glm/detail/_fixes.hpp \
  /home/FleurDeLys/Public/rutherford_project/cpp/includes/glm/glm/detail/setup.hpp \
  /usr/include/c++/14.2.1/cassert /usr/include/assert.h \
  /home/FleurDeLys/Public/rutherford_project/cpp/includes/glm/glm/detail/../simd/platform.h \
@@ -381,11 +383,4 @@ CMakeFiles/project.dir/src/main.cpp.o: \
  /home/FleurDeLys/Public/rutherford_project/cpp/includes/glm/glm/gtc/../gtc/../ext/vector_uint1_sized.hpp \
  /usr/include/c++/14.2.1/cstring /usr/include/string.h \
  /usr/include/strings.h \
- /home/FleurDeLys/Public/rutherford_project/cpp/includes/glm/glm/gtc/type_ptr.inl \
- /home/FleurDeLys/Public/rutherford_project/cpp/headers/shaders.h \
- /usr/include/c++/14.2.1/fstream /usr/include/c++/14.2.1/bits/codecvt.h \
- /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/basic_file.h \
- /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/c++io.h \
- /usr/include/c++/14.2.1/bits/fstream.tcc /usr/include/c++/14.2.1/sstream \
- /usr/include/c++/14.2.1/bits/sstream.tcc \
- /home/FleurDeLys/Public/rutherford_project/cpp/headers/physics.h
+ /home/FleurDeLys/Public/rutherford_project/cpp/includes/glm/glm/gtc/type_ptr.inl
