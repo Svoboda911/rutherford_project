@@ -26,7 +26,7 @@ void program() {
 
 
  
-    shader shader("../shaders/vertex.glsl", "../shaders/fragment.glsl"); // shader and program initinalisation
+    shader shader("../../shaders/vertex.glsl", "../../shaders/fragment.glsl"); // shader and program initinalisation
 
 
 
@@ -63,14 +63,13 @@ void program() {
     projection = glm::ortho(-aspect, aspect, -1.0f, 1.0f);
     // ---------------------------------
 
-
     // program loop --------------------
     unsigned int programLocModel = glGetUniformLocation(shader.program, "model");
     unsigned int programLocColor = glGetUniformLocation(shader.program, "color");
     unsigned int programLocProjection = glGetUniformLocation(shader.program, "projection");
     float lastTime = glfwGetTime();
     while(!glfwWindowShouldClose(window)) {
-        glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+        glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         shader.use();
