@@ -1,11 +1,15 @@
 file(REMOVE_RECURSE
   "CMakeFiles/project.dir/link.d"
+  "CMakeFiles/project.dir/src/geometry.cpp.o"
+  "CMakeFiles/project.dir/src/geometry.cpp.o.d"
   "CMakeFiles/project.dir/src/main.cpp.o"
   "CMakeFiles/project.dir/src/main.cpp.o.d"
   "CMakeFiles/project.dir/src/physics.cpp.o"
   "CMakeFiles/project.dir/src/physics.cpp.o.d"
   "CMakeFiles/project.dir/src/shaders.cpp.o"
   "CMakeFiles/project.dir/src/shaders.cpp.o.d"
+  "CMakeFiles/project.dir/src/vertices.cpp.o"
+  "CMakeFiles/project.dir/src/vertices.cpp.o.d"
   "project"
   "project.pdb"
 )

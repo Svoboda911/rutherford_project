@@ -114,11 +114,41 @@ CMakeFiles/project.dir/src/physics.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/src/physics.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/FleurDeLys/Public/rutherford_project/cpp/src/physics.cpp -o CMakeFiles/project.dir/src/physics.cpp.s
 
+CMakeFiles/project.dir/src/vertices.cpp.o: CMakeFiles/project.dir/flags.make
+CMakeFiles/project.dir/src/vertices.cpp.o: /home/FleurDeLys/Public/rutherford_project/cpp/src/vertices.cpp
+CMakeFiles/project.dir/src/vertices.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/FleurDeLys/Public/rutherford_project/cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/project.dir/src/vertices.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/src/vertices.cpp.o -MF CMakeFiles/project.dir/src/vertices.cpp.o.d -o CMakeFiles/project.dir/src/vertices.cpp.o -c /home/FleurDeLys/Public/rutherford_project/cpp/src/vertices.cpp
+
+CMakeFiles/project.dir/src/vertices.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/src/vertices.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/FleurDeLys/Public/rutherford_project/cpp/src/vertices.cpp > CMakeFiles/project.dir/src/vertices.cpp.i
+
+CMakeFiles/project.dir/src/vertices.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/src/vertices.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/FleurDeLys/Public/rutherford_project/cpp/src/vertices.cpp -o CMakeFiles/project.dir/src/vertices.cpp.s
+
+CMakeFiles/project.dir/src/geometry.cpp.o: CMakeFiles/project.dir/flags.make
+CMakeFiles/project.dir/src/geometry.cpp.o: /home/FleurDeLys/Public/rutherford_project/cpp/src/geometry.cpp
+CMakeFiles/project.dir/src/geometry.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/FleurDeLys/Public/rutherford_project/cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/project.dir/src/geometry.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/src/geometry.cpp.o -MF CMakeFiles/project.dir/src/geometry.cpp.o.d -o CMakeFiles/project.dir/src/geometry.cpp.o -c /home/FleurDeLys/Public/rutherford_project/cpp/src/geometry.cpp
+
+CMakeFiles/project.dir/src/geometry.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/src/geometry.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/FleurDeLys/Public/rutherford_project/cpp/src/geometry.cpp > CMakeFiles/project.dir/src/geometry.cpp.i
+
+CMakeFiles/project.dir/src/geometry.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/src/geometry.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/FleurDeLys/Public/rutherford_project/cpp/src/geometry.cpp -o CMakeFiles/project.dir/src/geometry.cpp.s
+
 # Object files for target project
 project_OBJECTS = \
 "CMakeFiles/project.dir/src/main.cpp.o" \
 "CMakeFiles/project.dir/src/shaders.cpp.o" \
-"CMakeFiles/project.dir/src/physics.cpp.o"
+"CMakeFiles/project.dir/src/physics.cpp.o" \
+"CMakeFiles/project.dir/src/vertices.cpp.o" \
+"CMakeFiles/project.dir/src/geometry.cpp.o"
 
 # External object files for target project
 project_EXTERNAL_OBJECTS =
@@ -126,6 +156,8 @@ project_EXTERNAL_OBJECTS =
 project: CMakeFiles/project.dir/src/main.cpp.o
 project: CMakeFiles/project.dir/src/shaders.cpp.o
 project: CMakeFiles/project.dir/src/physics.cpp.o
+project: CMakeFiles/project.dir/src/vertices.cpp.o
+project: CMakeFiles/project.dir/src/geometry.cpp.o
 project: CMakeFiles/project.dir/build.make
 project: CMakeFiles/project.dir/compiler_depend.ts
 project: includes/glfw/src/libglfw3.a
@@ -134,7 +166,7 @@ project: includes/glm/glm/libglm.a
 project: /usr/lib/librt.a
 project: /usr/lib/libm.so
 project: CMakeFiles/project.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/FleurDeLys/Public/rutherford_project/cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable project"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/FleurDeLys/Public/rutherford_project/cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable project"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/project.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

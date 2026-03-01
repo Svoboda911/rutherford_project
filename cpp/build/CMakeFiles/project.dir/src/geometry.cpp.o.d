@@ -1,6 +1,7 @@
-CMakeFiles/project.dir/src/main.cpp.o: \
- /home/FleurDeLys/Public/rutherford_project/cpp/src/main.cpp \
+CMakeFiles/project.dir/src/geometry.cpp.o: \
+ /home/FleurDeLys/Public/rutherford_project/cpp/src/geometry.cpp \
  /usr/include/stdc-predef.h \
+ /home/FleurDeLys/Public/rutherford_project/cpp/headers/geometry.h \
  /home/FleurDeLys/Public/rutherford_project/cpp/headers/libraries.h \
  /usr/include/c++/14.2.1/iostream \
  /usr/include/c++/14.2.1/bits/requires_hosted.h \
@@ -388,8 +389,4 @@ CMakeFiles/project.dir/src/main.cpp.o: \
  /home/FleurDeLys/Public/rutherford_project/cpp/includes/glm/glm/gtc/../gtc/../ext/vector_uint1_sized.hpp \
  /usr/include/c++/14.2.1/cstring /usr/include/string.h \
  /usr/include/strings.h \
- /home/FleurDeLys/Public/rutherford_project/cpp/includes/glm/glm/gtc/type_ptr.inl \
- /home/FleurDeLys/Public/rutherford_project/cpp/headers/shaders.h \
- /home/FleurDeLys/Public/rutherford_project/cpp/headers/physics.h \
- /home/FleurDeLys/Public/rutherford_project/cpp/headers/vertices.h \
- /home/FleurDeLys/Public/rutherford_project/cpp/headers/geometry.h
+ /home/FleurDeLys/Public/rutherford_project/cpp/includes/glm/glm/gtc/type_ptr.inl

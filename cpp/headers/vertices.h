@@ -1,6 +1,10 @@
 #pragma once
-#include <vector>
-#include <cmath>
+#include "libraries.h"
 
-void spheref(std::vector<float>& vertices, std::vector<unsigned int>& indices, int latitude, int longitude);
-void gridf(std::vector<float>& grid, int size, float step);
+struct mesh {
+    unsigned int VBO;
+    unsigned int VAO;
+    mesh();
+    ~mesh();
+    void upload(std::vector<float>& vertices);
+};

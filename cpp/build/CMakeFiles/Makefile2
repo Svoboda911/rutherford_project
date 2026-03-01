@@ -198,12 +198,12 @@ CMakeFiles/project.dir/all: includes/glfw/src/CMakeFiles/glfw.dir/all
 CMakeFiles/project.dir/all: includes/glm/glm/CMakeFiles/glm.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/project.dir/build.make CMakeFiles/project.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/project.dir/build.make CMakeFiles/project.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/FleurDeLys/Public/rutherford_project/cpp/build/CMakeFiles --progress-num=50,51,52,53 "Built target project"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/FleurDeLys/Public/rutherford_project/cpp/build/CMakeFiles --progress-num=50,51,52,53,54,55 "Built target project"
 .PHONY : CMakeFiles/project.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/project.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/FleurDeLys/Public/rutherford_project/cpp/build/CMakeFiles 53
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/FleurDeLys/Public/rutherford_project/cpp/build/CMakeFiles 55
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/project.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/FleurDeLys/Public/rutherford_project/cpp/build/CMakeFiles 0
 .PHONY : CMakeFiles/project.dir/rule
@@ -215,7 +215,7 @@ project: CMakeFiles/project.dir/rule
 # codegen rule for target.
 CMakeFiles/project.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/project.dir/build.make CMakeFiles/project.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/FleurDeLys/Public/rutherford_project/cpp/build/CMakeFiles --progress-num=50,51,52,53 "Finished codegen for target project"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/FleurDeLys/Public/rutherford_project/cpp/build/CMakeFiles --progress-num=50,51,52,53,54,55 "Finished codegen for target project"
 .PHONY : CMakeFiles/project.dir/codegen
 
 # clean rule for target.
@@ -326,7 +326,7 @@ includes/glfw/src/CMakeFiles/glfw.dir/clean:
 includes/glfw/src/CMakeFiles/update_mappings.dir/all:
 	$(MAKE) $(MAKESILENT) -f includes/glfw/src/CMakeFiles/update_mappings.dir/build.make includes/glfw/src/CMakeFiles/update_mappings.dir/depend
 	$(MAKE) $(MAKESILENT) -f includes/glfw/src/CMakeFiles/update_mappings.dir/build.make includes/glfw/src/CMakeFiles/update_mappings.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/FleurDeLys/Public/rutherford_project/cpp/build/CMakeFiles --progress-num=54 "Built target update_mappings"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/FleurDeLys/Public/rutherford_project/cpp/build/CMakeFiles --progress-num=56 "Built target update_mappings"
 .PHONY : includes/glfw/src/CMakeFiles/update_mappings.dir/all
 
 # Build rule for subdir invocation for target.
@@ -343,7 +343,7 @@ update_mappings: includes/glfw/src/CMakeFiles/update_mappings.dir/rule
 # codegen rule for target.
 includes/glfw/src/CMakeFiles/update_mappings.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f includes/glfw/src/CMakeFiles/update_mappings.dir/build.make includes/glfw/src/CMakeFiles/update_mappings.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/FleurDeLys/Public/rutherford_project/cpp/build/CMakeFiles --progress-num=54 "Finished codegen for target update_mappings"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/FleurDeLys/Public/rutherford_project/cpp/build/CMakeFiles --progress-num=56 "Finished codegen for target update_mappings"
 .PHONY : includes/glfw/src/CMakeFiles/update_mappings.dir/codegen
 
 # clean rule for target.

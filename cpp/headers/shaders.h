@@ -1,12 +1,5 @@
 #pragma once
-
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <sstream>
-
-#include <glad.h>
-#include <GLFW/glfw3.h>
+#include "libraries.h"
 
 class shader {
 public:

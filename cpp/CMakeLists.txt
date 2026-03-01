@@ -9,6 +9,8 @@ add_executable(project
 src/main.cpp
 src/shaders.cpp
 src/physics.cpp
+src/vertices.cpp
+src/geometry.cpp
 )
 
 add_library(glad STATIC ${CMAKE_CURRENT_SOURCE_DIR}/includes/glad/glad.c)

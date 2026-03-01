@@ -263,6 +263,30 @@ includes/glad/glad.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/glad.dir/build.make CMakeFiles/glad.dir/includes/glad/glad.c.s
 .PHONY : includes/glad/glad.c.s
 
+src/geometry.o: src/geometry.cpp.o
+.PHONY : src/geometry.o
+
+# target to build an object file
+src/geometry.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/project.dir/build.make CMakeFiles/project.dir/src/geometry.cpp.o
+.PHONY : src/geometry.cpp.o
+
+src/geometry.i: src/geometry.cpp.i
+.PHONY : src/geometry.i
+
+# target to preprocess a source file
+src/geometry.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/project.dir/build.make CMakeFiles/project.dir/src/geometry.cpp.i
+.PHONY : src/geometry.cpp.i
+
+src/geometry.s: src/geometry.cpp.s
+.PHONY : src/geometry.s
+
+# target to generate assembly for a file
+src/geometry.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/project.dir/build.make CMakeFiles/project.dir/src/geometry.cpp.s
+.PHONY : src/geometry.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -335,6 +359,30 @@ src/shaders.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/project.dir/build.make CMakeFiles/project.dir/src/shaders.cpp.s
 .PHONY : src/shaders.cpp.s
 
+src/vertices.o: src/vertices.cpp.o
+.PHONY : src/vertices.o
+
+# target to build an object file
+src/vertices.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/project.dir/build.make CMakeFiles/project.dir/src/vertices.cpp.o
+.PHONY : src/vertices.cpp.o
+
+src/vertices.i: src/vertices.cpp.i
+.PHONY : src/vertices.i
+
+# target to preprocess a source file
+src/vertices.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/project.dir/build.make CMakeFiles/project.dir/src/vertices.cpp.i
+.PHONY : src/vertices.cpp.i
+
+src/vertices.s: src/vertices.cpp.s
+.PHONY : src/vertices.s
+
+# target to generate assembly for a file
+src/vertices.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/project.dir/build.make CMakeFiles/project.dir/src/vertices.cpp.s
+.PHONY : src/vertices.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -356,6 +404,9 @@ help:
 	@echo "... includes/glad/glad.o"
 	@echo "... includes/glad/glad.i"
 	@echo "... includes/glad/glad.s"
+	@echo "... src/geometry.o"
+	@echo "... src/geometry.i"
+	@echo "... src/geometry.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
@@ -365,6 +416,9 @@ help:
 	@echo "... src/shaders.o"
 	@echo "... src/shaders.i"
 	@echo "... src/shaders.s"
+	@echo "... src/vertices.o"
+	@echo "... src/vertices.i"
+	@echo "... src/vertices.s"
 .PHONY : help
 
 

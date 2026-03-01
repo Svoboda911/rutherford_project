@@ -1,23 +1,15 @@
 #pragma once
-
-#include <iostream>
-#include <vector>
-
-#include <glad.h>
-#include <GLFW/glfw3.h>
-
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
+#include "libraries.h"
 
 struct particles {
-    glm::vec3 startPos;
-    glm::vec3 startVelocity;
+    glm::mat4 model;
+    glm::vec3 position;
+    glm::vec3 velocity;
+    glm::vec3 scale;
 };
 
-std::vector<particles> spawnParticles(float& deltaTime, std::vector<particles>& alphas);
-std::vector<float> initVertices(const int& segments, const float& radius);
-
+float getDeltaTime(float& lastTime);
 float randomFloat(float min, float max);
 
-void updateParticle(glm::vec3& alphaPos, glm::vec3& alphaVelocity, glm::vec3& kernelPos, float deltaTime, std::vector<float>& vertices, unsigned int& programLocModel, unsigned int& programLocColor);
+void spawnParticles(particles& alpha, float& deltaTime, std::vector<particles>& alphas);
+void updateParticle(particles& alpha, const particles& kernel, float deltaTime);
