@@ -1,0 +1,10 @@
+# CMake / build artifacts
+build/
+build-*/
+cmake-build-*/
+cpp/build/
+cpp/build*/
+cpp/build-release/
+
+# Tooling noise
+.DS_Store
